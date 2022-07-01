@@ -1,20 +1,24 @@
 #include <stdio.h>
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
 /**
  * main - Entry point
- * Return: Always 0 (Success)
+ * Return: 0
  */
 
 int main(void)
 {
-	int n;
-	char c;
-	for (n = 48; n <= 57; n++)
-		putchar(n);
-	for (c = 'a'; c <= 'f'; c++)
+	int c, C;
+	c = '0';
+	C = 'a';
+	while (c <= '9')
+	{
 		putchar(c);
+		c++;
+	}
+	while (C <= 'f')
+	{
+		putchar(C);
+		C++;
+	}
 	putchar('\n');
 	return (0);
 }
