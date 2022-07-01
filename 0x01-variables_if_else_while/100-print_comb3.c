@@ -10,6 +10,7 @@
 int main(void)
 {
 	int a;
+
 	for (a = 0; a <= 89; a++)
 		if (a < ((a % 10) * 10) + (a / 10))
 		{
