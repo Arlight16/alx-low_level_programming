@@ -7,6 +7,7 @@
 int main(void)
 {
 	int c, C;
+
 	c = '0';
 	C = 'a';
 	while (c <= '9')
