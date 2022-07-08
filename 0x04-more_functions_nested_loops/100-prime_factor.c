@@ -1,25 +1,25 @@
-#include <math.h>
 #include <stdio.h>
+
 /**
- *
  * main - main block
  *
  * Return: 0
  */
 int main(void)
 {
-	long int a = 612852475143;
+	unsigned long num = 612852475143;
+	unsigned long div = 2;
 
-	int x;
-
-	for (x = 3; x <= sqrt(a); x++)
+	while (div < num)
 	{
-		if (a % x == 0)
-
-			a = a / x;
+		if (num % div == 0)
+			num /= div++;
+		else
+			div++;
 	}
 
-	printf("%li\n", a);
+	printf("%lu\n", num);
+
 	return (0);
 }
 
