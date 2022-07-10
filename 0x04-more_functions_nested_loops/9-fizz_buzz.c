@@ -1,26 +1,37 @@
 #include "main.h"
 
 /**
- * main - Solution for Fizz-Buzz problem.
- *
- * Return: 0 - Success
+ * main - prints the numbers from 1 to 100, followed by a new line.
+ * For multiples of three print Fizz instead of the number and
+ * for the multiples of five print Buzz.
+ * For numbers which are multiples of both three and five print FizzBuzz
+ * Return: 0 Success
  */
 
 int main(void)
 {
-	int i;
+	int n;
 
-	printf("%d", 1);
-	for (i = 2; i <= 100; i++)
+	for (n = 1; n <= 100; n++)
 	{
-		if (i % 3 == 0 && i % 5 == 0)
+		if (n == 1)
+			printf("%d", n);
+		else if ((n % 3 == 0) && (n % 5 == 0))
+		{
 			printf(" FizzBuzz");
-		else if (i % 3 == 0)
+		}
+		else if (n % 3 == 0)
+		{
 			printf(" Fizz");
-		else if (i % 5 == 0)
+		}
+		else if (n % 5 == 0)
+		{
 			printf(" Buzz");
+		}
 		else
-			printf(" %d", i);
+		{
+			printf(" %d", n);
+		}
 	}
 	printf("\n");
 	return (0);
