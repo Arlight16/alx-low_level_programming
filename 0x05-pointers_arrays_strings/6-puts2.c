@@ -9,18 +9,17 @@ i#incluse "main.h"
 
 void puts2(char *str)
 {
-	int len, i;
+	int count = 0;
 
-	len = 0;
-
-	while (str[len] != '\0')
+	while (count >= 0)
 	{
-		len++;
+		if (str[count] == '\0')
+		{
+			_putchar('\n');
+			break;
+		}
+		if (count % 2 == 0)
+			_putchar(str[count]);
+		count++;
 	}
-	for (i = 0; i < len; i += 2)
-	{
-		_putchar(str[i]);
-	}
-
-	_putchar('\n');
 }
