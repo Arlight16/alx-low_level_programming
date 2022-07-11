@@ -4,17 +4,17 @@
 /**
  * print_array - Prints an inputted number of elements
  *     of an array of integers.
- *     @a: The array of integers.
- *     @n: The number of elements to be printed.
+ * @a: The array of integers.
+ * @n: The number of elements to be printed.
  *
- *     Return: 0
+ * Return: 0
  */
 
 void print_array(int *a, int n)
 {
-	int count;
+	int index;
 
-	for (count = 0; count < n; count++)
+	for (index = 0; index < n; index++)
 	{
 		printf("%d", a[index]);
 
