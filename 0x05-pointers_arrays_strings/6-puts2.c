@@ -1,7 +1,7 @@
 i#incluse "main.h"
 
 /**
- * puts2 - function that prints 1 char/2 of a string, followed by a new line
+ * puts2 - prints every other character of a string
  * @str: Set of characters
  *
  * Return: Nothing
