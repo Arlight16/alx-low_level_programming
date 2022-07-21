@@ -1,32 +1,34 @@
 #include "main.h"
 
 /**
- * is_prime_number - Function that returns if the number is a prime
- * @n: Number to evaluate if it is a prime number
- *
- * Return: 1 - Prime number | 0 - Not prime number.
+ * is_prime - detects if an input number is a prime number.
+ * @n: input number.
+ * @a: iterator.
+ * Return: 1 if n is a prime number. 0 if n is not a prime number.
  */
-
+int is_prime(unsigned int n, unsigned int a)
+{
+	if (n % a == 0)
+	{
+		if (n == a)
+			return (1);
+		else
+			return (0);
+	}
+	return (0 + is_prime(n, a + 1));
+}
+/**
+ * is_prime_number - detects if an input number is a prime number.
+ * @n: input number.
+ * Return: 1 if n is a prime number. 0 if n is not a prime number.
+ */
 int is_prime_number(int n)
 {
-	return (get_prime(n, 2));
-}
-
-/**
- * get_prime - Get the square root recursively
- * @n: Number to evaluate if it is a prime number
- * @i: Iterator
- *
- * Return: 1 - Prime number | 0 - Not prime number.
- */
-int get_prime(int n, int i)
-{
-	if (n < 2)
+	if (n == 0)
 		return (0);
-	else if (n % i == 0 && i != n)
+	if (n < 0)
 		return (0);
-	else if (i == n)
-		return (1);
-
-	return (get_prime(n, i + 1));
+	if (n == 1)
+		return (0);
+	return (is_prime(n, 2));
 }
