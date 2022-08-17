@@ -1,72 +1,69 @@
 #include "lists.h"
 
 /**
- * _get_loop - Counts the number of unique nodes
- * @head: list
+ * free_listp - frees a linked list
+ * @head: head of a list.
  *
- * Return: nodes or 0
+ * Return: no return.
  */
-size_t _get_loop(const listint_t *head)
+void free_listp(listp_t **head)
 {
-	const listint_t *chaser, *runner;
-	size_t nodes = 1;
+	listp_t *temp;
+	listp_t *curr;
 
-	if (!head || !head->next)
-		return (0);
-
-	chaser = head->next;
-	runner = (head->next)->next;
-
-	for (; runner;)
+	if (head != NULL)
 	{
-		if (chaser == runner)
+		curr = *head;
+		while ((temp = curr) != NULL)
 		{
-			chaser = head;
-			for (; chaser != runner;)
-			{
-				nodes++;
-				chaser = chaser->next;
-			}
-
-			return (nodes);
+			curr = curr->next;
+			free(temp);
 		}
-
-		chaser = chaser->next;
-		runner = (runner->next)->next;
+		*head = NULL;
 	}
-
-	return (0);
 }
 
 /**
- * print_listint_safe - Prints a list safely
- * @head: list
+ * print_listint_safe - prints a linked list.
+ * @head: head of a list.
  *
- * Return: The number of nodes in the list
+ * Return: number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t nodes, index = 0;
+	size_t nnodes = 0;
+	listp_t *hptr, *new, *add;
 
-	nodes = _get_loop(head);
-
-	if (!nodes)
+	hptr = NULL;
+	while (head != NULL)
 	{
-		for (; head; nodes++)
+		new = malloc(sizeof(listp_t));
+
+		if (new == NULL)
+			exit(98);
+
+		new->p = (void *)head;
+		new->next = hptr;
+		hptr = new;
+
+		add = hptr;
+
+		while (add->next != NULL)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
+			add = add->next;
+			if (head == add->p)
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_listp(&hptr);
+				return (nnodes);
+			}
 		}
 
-		goto KILL;
-	}
-
-	for (index = 0; index < nodes; index++)
-	{
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
+		nnodes++;
 	}
-	printf("-> [%p] %d\n", (void *)head, head->n);
 
-KILL:	return (nodes);
+	free_listp(&hptr);
+	return (nnodes);
 }
