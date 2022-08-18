@@ -1,24 +1,46 @@
+#include <stdlib.h>
 #include "main.h"
 
 /**
- * binary_to_uint - converts a binary number to unsigned int
- * @b: string containing the binary number
- * Return: the converted number
+ * binary_to_uint -  converts a binary number to an unsigned int.
+ * @b: Pointer to string that contains a binary number
+ *
+ * Return: Decimal number or 0 if error.
  */
-
 unsigned int binary_to_uint(const char *b)
 {
-	int i;
-	unsigned int digit = 0;
+	unsigned int len = 0, result = 0;
+	int i = 0, j = 0;
 
-	if (!b)
+	if (b == NULL)
 		return (0);
 
-	for (i = 0; b[i]; i++)
+	while (*(b + len) != '\0')
+		len++;
+
+	for (i = (len - 1), j = 0; i >= 0; i--, j++)
 	{
 		if (b[i] != '0' && b[i] != '1')
 			return (0);
-		digit = 2 * digit + (b[i] - '0');
+
+		result += (b[i] - '0') * _pow_recursion(2, j);
 	}
-	return (digit);
+
+	return (result);
+}
+
+/**
+ * _pow_recursion - Function that returns the factorial of a given number
+ * @x: Base
+ * @y: Power
+ *
+ * Return: Result of x raised to the power of y.
+ */
+int _pow_recursion(int x, int y)
+{
+	if (y == 0)
+		return (1);
+	else if (y < 0)
+		return (-1);
+	return (x * _pow_recursion(x, y - 1));
 }
